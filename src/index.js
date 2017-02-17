@@ -1,33 +1,10 @@
-import 'babel-polyfill';
-import thunkMiddleWare from 'redux-thunk';
-import createLogger from 'redux-logger';
-import {createStore, applyMiddleware} from 'redux';
-import {selectSubreddit, fetchPosts, fetchPostsIfNeeded} from './actions/actions';
-import rootReducer from './reducers/reducers';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import Root from './containers/Root';
+import 'babel-polyfill'
 
-const loggerMiddleware = createLogger();
+import React from 'react'
+import { render } from 'react-dom'
+import Root from './containers/Root'
 
-const store = createStore(
-    rootReducer,
-    applyMiddleware(
-        thunkMiddleWare,
-        loggerMiddleware
-    )
-);
-
-
-
-store.dispatch(fetchPostsIfNeeded('reactjs')).then(() =>
-    console.log(store.getState())
-);
-
-ReactDOM.render(
-    <App />,
+render(
+    <Root />,
     document.getElementById('root')
-);
-
+)
