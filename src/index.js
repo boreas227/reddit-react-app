@@ -8,6 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import Root from './containers/Root';
 
 const loggerMiddleware = createLogger();
 
@@ -19,11 +20,14 @@ const store = createStore(
     )
 );
 
+
+
 store.dispatch(fetchPostsIfNeeded('reactjs')).then(() =>
     console.log(store.getState())
 );
 
-// ReactDOM.render(
-//     <App />,
-//     document.getElementById('root')
-// );
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);
+
